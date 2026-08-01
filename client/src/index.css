@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+/* ========== Custom Design Tokens ========== */
+@theme {
+  --color-brand-50: #fef2f4;
+  --color-brand-100: #fde6ea;
+  --color-brand-200: #fbd0d9;
+  --color-brand-300: #f8a4b8;
+  --color-brand-400: #f36d91;
+  --color-brand-500: #e94560;
+  --color-brand-600: #d6254a;
+  --color-brand-700: #b41a3d;
+  --color-brand-800: #961939;
+  --color-brand-900: #811937;
+
+  --color-dark-50: #eeeef2;
+  --color-dark-100: #d0d0db;
+  --color-dark-200: #a2a2b8;
+  --color-dark-300: #6e6e8f;
+  --color-dark-400: #3d3d66;
+  --color-dark-500: #1a1a2e;
+  --color-dark-600: #16213e;
+  --color-dark-700: #0f1729;
+  --color-dark-800: #0a1020;
+  --color-dark-900: #060b16;
+
+  --font-sans: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+/* ========== Base Layer ========== */
+@layer base {
+  body {
+    font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: linear-gradient(135deg, #0f0c29 0%, #1a1a2e 50%, #16213e 100%);
+    min-height: 100vh;
+  }
+}
+
+/* ========== Animated gradient background ========== */
+.bg-animated {
+  background: linear-gradient(-45deg, #0f0c29, #1a1a2e, #16213e, #0f172a);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ========== Glow effects ========== */
+.glow-brand {
+  box-shadow: 0 0 30px rgba(233, 69, 96, 0.15), 0 0 60px rgba(233, 69, 96, 0.05);
+}
+
+.glow-brand-strong {
+  box-shadow: 0 0 20px rgba(233, 69, 96, 0.3), 0 0 40px rgba(233, 69, 96, 0.1);
+}
+
+/* ========== Glass card ========== */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ========== Floating animation ========== */
+.float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* ========== Shimmer text ========== */
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    #e94560 0%,
+    #f8a4b8 25%,
+    #e94560 50%,
+    #f8a4b8 75%,
+    #e94560 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+  to { background-position: 200% center; }
+}
+
+/* ========== Input focus ring ========== */
+.input-glow:focus {
+  box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.2), 0 0 20px rgba(233, 69, 96, 0.1);
+}
+
+/* ========== Button pulse ========== */
+.btn-pulse:hover {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 4px 20px rgba(233, 69, 96, 0.4); }
+  50% { box-shadow: 0 4px 40px rgba(233, 69, 96, 0.6); }
+}
+
+/* ========== Particle dots ========== */
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(233, 69, 96, 0.3);
+  border-radius: 50%;
+  animation: drift 20s linear infinite;
+}
+
+@keyframes drift {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
+}
